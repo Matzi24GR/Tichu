@@ -1,12 +1,14 @@
-package com.example.geomatmatzi.tichu..tichu;
+package com.example.geomatmatzi.tichu;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.geomatmatzi.tichu.R;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import com.example.geomatmatzi.tichu..com.example.geomatmatzi.tichu..Cards.*;
-import com.example.geomatmatzi.tichu..com.example.geomatmatzi.tichu..Combinations.*;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     public class TICHU {
 
 
-        private ArrayList<com.example.geomatmatzi.tichu..Cards.Card> table; //lista apo kartes pou uparxoun sto trapezi
+        private ArrayList<com.example.geomatmatzi.tichu.Cards.Card> table; //lista apo kartes pou uparxoun sto trapezi
         private int Round;//o ari8mos ths partidas pou paizetai
-        private com.example.geomatmatzi.tichu..Combinations.CardCombination currentRound;//o tupos tou gurou ston opoio paizoun oi paiktes
+        private com.example.geomatmatzi.tichu.Combinations.CardCombination currentRound;//o tupos tou gurou ston opoio paizoun oi paiktes
         private Player currPlayer;
         private ArrayList<Player> players;//oi lista apo tous paiktes tou paixnidiou
         private ArrayList<Player> playerWhosaidTichu;//pinakas apo tous paiktes pou exoun pei Tichu sthn sugkekrimenh partida
@@ -65,21 +67,21 @@ public class MainActivity extends AppCompatActivity {
             this.whishDone = false;
             this.Round = 1;
             this.state = GameState.UNDEFINED;
-            this.table =new  ArrayList<com.example.geomatmatzi.tichu..Cards.Card>();
+            this.table =new  ArrayList<com.example.geomatmatzi.tichu.Cards.Card>();
             this.PasoCount = 0;
             //Cards shuffle etc..
 
             for(int i = 0 ; i < 4; i++){
                 for(int j =2; j<15; j++){
 
-                    com.example.geomatmatzi.tichu..Cards.SimpleCard tmp = new com.example.geomatmatzi.tichu..Cards.SimpleCard(i,j);
+                    com.example.geomatmatzi.tichu.Cards.SimpleCard tmp = new com.example.geomatmatzi.tichu.Cards.SimpleCard(i,j);
                     this.table.add(tmp);
                 }
             }
-            this.table.add(new com.example.geomatmatzi.tichu..Cards.Drache());
-            this.table.add(new com.example.geomatmatzi.tichu..Cards.Mahjong());
-            this.table.add(new com.example.geomatmatzi.tichu..Cards.Hund());
-            this.table.add(new com.example.geomatmatzi.tichu..Cards.Phoenix());
+            this.table.add(new com.example.geomatmatzi.tichu.Cards.Drache());
+            this.table.add(new com.example.geomatmatzi.tichu.Cards.Mahjong());
+            this.table.add(new com.example.geomatmatzi.tichu.Cards.Hund());
+            this.table.add(new com.example.geomatmatzi.tichu.Cards.Phoenix());
             this.currPlayer = null;
         }
 
@@ -120,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean sayTichu(Player p){
             if(p.getPlayersHand().size() == 14){
                 p.setSaidTichu(true);
-                this.playerWhosaidcom.example.geomatmatzi.tichu..add(p);
+                this.playerWhosaidcom.example.geomatmatzi.tichu.add(p);
                 return true;
             }
             else{
@@ -184,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        public com.example.geomatmatzi.tichu..Cards.Card drawFromDeck(){
+        public com.example.geomatmatzi.tichu.Cards.Card drawFromDeck(){
             Random generator = new Random();
             int index= generator.nextInt( this.table.size() );
             return this.table.remove(index);
@@ -263,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
          * @param c Card[]
          * @param wishnumber int
          */
-        public boolean PlayersAction(Player p, com.example.geomatmatzi.tichu..Combinations.CardCombination c, int wishnumber) throws Exception{
+        public boolean PlayersAction(Player p, com.example.geomatmatzi.tichu.Combinations.CardCombination c, int wishnumber) throws Exception{
             /*System.out.println("Tichu1 "+ Team1.isSaidtichu());
             System.out.println("Tichu2 "+ Team2.isSaidtichu());
             this.Team1.CalculateTeamScore(false);
@@ -275,27 +277,27 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Grant2 "+ Team2.isSaidgrant());*/
 
 
-            com.example.geomatmatzi.tichu..Combinations.CardCombination.sortDeck(c.getCards());
+            com.example.geomatmatzi.tichu.Combinations.CardCombination.sortDeck(c.getCards());
             int comb = this.getCardsCategory(c);
-            com.example.geomatmatzi.tichu..Combinations.CardCombination deck;
+            com.example.geomatmatzi.tichu.Combinations.CardCombination deck;
             switch(comb){
                 case 1 :
-                    deck = new com.example.geomatmatzi.tichu..Combinations.OneCard(c.getCards());
+                    deck = new com.example.geomatmatzi.tichu.Combinations.OneCard(c.getCards());
                     break;
                 case 2:
-                    deck = new com.example.geomatmatzi.tichu..Combinations.OnePair(c.getCards());
+                    deck = new com.example.geomatmatzi.tichu.Combinations.OnePair(c.getCards());
                     break;
                 case 3:
-                    deck = new com.example.geomatmatzi.tichu..Combinations.TreeCards(c.getCards());
+                    deck = new com.example.geomatmatzi.tichu.Combinations.TreeCards(c.getCards());
                     break;
                 case 4:
-                    deck = new com.example.geomatmatzi.tichu..Combinations.Steps(c.getCards());
+                    deck = new com.example.geomatmatzi.tichu.Combinations.Steps(c.getCards());
                     break;
                 case 5:
-                    deck = new com.example.geomatmatzi.tichu..Combinations.Kenda(c.getCards());
+                    deck = new com.example.geomatmatzi.tichu.Combinations.Kenda(c.getCards());
                     break;
                 case 6:
-                    deck = new com.example.geomatmatzi.tichu..Combinations.Full(c.getCards());
+                    deck = new com.example.geomatmatzi.tichu.Combinations.Full(c.getCards());
                     break;
                 default:
                     return false;
@@ -311,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
                 this.whishDone = false;
                 //this.currPlayer=p;
                 this.currentRound = deck;
-                for(com.example.geomatmatzi.tichu..Cards.Card tmp : deck.getCards()){
+                for(com.example.geomatmatzi.tichu.Cards.Card tmp : deck.getCards()){
                     this.table.add(tmp);
                 }
                 this.state = GameState.PLAYING;
@@ -322,10 +324,10 @@ public class MainActivity extends AppCompatActivity {
 
                 this.currPlayer = this.getNextPlayer();
 
-                ArrayList <com.example.geomatmatzi.tichu..Cards.Card> cs = new ArrayList<>();
-                cs.add(new com.example.geomatmatzi.tichu..Cards.Mahjong());
+                ArrayList <com.example.geomatmatzi.tichu.Cards.Card> cs = new ArrayList<>();
+                cs.add(new com.example.geomatmatzi.tichu.Cards.Mahjong());
 
-                this.client.changePlayer(new com.example.geomatmatzi.tichu..Combinations.CardSet(cs));
+                this.client.changePlayer(new com.example.geomatmatzi.tichu.Combinations.CardSet(cs));
                 return true;
 
             }
@@ -338,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else{
                         this.PasoCount=0;
-                        for(com.example.geomatmatzi.tichu..Cards.Card tmp : deck.getCards()){
+                        for(com.example.geomatmatzi.tichu.Cards.Card tmp : deck.getCards()){
                             this.table.add(tmp);
                         }
                         this.currPlayer=p;
@@ -352,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
                     this.whishDone = true;
                     this.currPlayer=p;
                     this.currentRound = deck;
-                    for(com.example.geomatmatzi.tichu..Cards.Card tmp : deck.getCards()){
+                    for(com.example.geomatmatzi.tichu.Cards.Card tmp : deck.getCards()){
                         this.table.add(tmp);
                     }
                     p.removeCardsFromHands(c.getCards());
@@ -368,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //new round
                 else if(this.currentRound == null){
-                    if((this.currentRound ==null) && (deck.getCards().get(0) instanceof com.example.geomatmatzi.tichu..Cards.Hund)){
+                    if((this.currentRound ==null) && (deck.getCards().get(0) instanceof com.example.geomatmatzi.tichu.Cards.Hund)){
                         //     this.currPlayer = this.getNextPlayer();
                         Player other;
                         if(p.getTeam().getP1() == p){
@@ -389,7 +391,7 @@ public class MainActivity extends AppCompatActivity {
                                 this.currPlayer=p;
                             }
                         }
-                        for(com.example.geomatmatzi.tichu..Cards.Card tmp : deck.getCards()){
+                        for(com.example.geomatmatzi.tichu.Cards.Card tmp : deck.getCards()){
                             this.table.add(tmp);
                         }
                         p.removeCardsFromHands(c.getCards());
@@ -401,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     this.currPlayer=p;
                     this.currentRound = deck;
-                    for(com.example.geomatmatzi.tichu..Cards.Card tmp : deck.getCards()){
+                    for(com.example.geomatmatzi.tichu.Cards.Card tmp : deck.getCards()){
                         this.table.add(tmp);
                     }
                     this.state = GameState.PLAYING;
@@ -424,10 +426,10 @@ public class MainActivity extends AppCompatActivity {
                     if(deck.ispowerOfSetGreaterThan(this.currentRound)){
 
                         //Dragon in Monofyla
-                        if((comb ==1) && (deck.getCards().get(0) instanceof com.example.geomatmatzi.tichu..Cards.Drache)){
+                        if((comb ==1) && (deck.getCards().get(0) instanceof com.example.geomatmatzi.tichu.Cards.Drache)){
                             Player togive = this.client.showTheMpazaWindow();
                             this.PasoCount=0;
-                            for(com.example.geomatmatzi.tichu..Cards.Card tmp : deck.getCards()){
+                            for(com.example.geomatmatzi.tichu.Cards.Card tmp : deck.getCards()){
                                 this.table.add(tmp);
                             }
                             togive.CollectCardsFromTable(this.table);
@@ -443,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         this.currPlayer=p;
                         this.currentRound = deck;
-                        for(com.example.geomatmatzi.tichu..Cards.Card tmp : deck.getCards()){
+                        for(com.example.geomatmatzi.tichu.Cards.Card tmp : deck.getCards()){
                             this.table.add(tmp);
                         }
                         this.state = GameState.PLAYING;
@@ -647,21 +649,21 @@ public class MainActivity extends AppCompatActivity {
             this.whishDone = false;
 
             this.state = GameState.UNDEFINED;
-            this.table =new  ArrayList<com.example.geomatmatzi.tichu..Cards.Card>();
+            this.table =new  ArrayList<com.example.geomatmatzi.tichu.Cards.Card>();
             this.PasoCount = 0;
             //Cards shuffle etc..
 
             for(int i = 0 ; i < 4; i++){
                 for(int j =2; j<15; j++){
 
-                    com.example.geomatmatzi.tichu..Cards.SimpleCard tmp = new com.example.geomatmatzi.tichu..Cards.SimpleCard(i,j);
+                    com.example.geomatmatzi.tichu.Cards.SimpleCard tmp = new com.example.geomatmatzi.tichu.Cards.SimpleCard(i,j);
                     this.table.add(tmp);
                 }
             }
-            this.table.add(new com.example.geomatmatzi.tichu..Cards.Drache());
-            this.table.add(new com.example.geomatmatzi.tichu..Cards.Mahjong());
-            this.table.add(new com.example.geomatmatzi.tichu..Cards.Hund());
-            this.table.add(new com.example.geomatmatzi.tichu..Cards.Phoenix());
+            this.table.add(new com.example.geomatmatzi.tichu.Cards.Drache());
+            this.table.add(new com.example.geomatmatzi.tichu.Cards.Mahjong());
+            this.table.add(new com.example.geomatmatzi.tichu.Cards.Hund());
+            this.table.add(new com.example.geomatmatzi.tichu.Cards.Phoenix());
             this.currPlayer = null;
 
 
@@ -674,7 +676,7 @@ public class MainActivity extends AppCompatActivity {
          * Epistrefei tis kartes tou paixnidou
          * @return Card[]
          */
-        public ArrayList<com.example.geomatmatzi.tichu..Cards.Card> getTableCards() {
+        public ArrayList<com.example.geomatmatzi.tichu.Cards.Card> getTableCards() {
             return this.table;
         }
 
@@ -697,7 +699,7 @@ public class MainActivity extends AppCompatActivity {
          * Eisagei tis kartes me tis opoies 8a paiksoun oi paiktes
          * @param cards
          */
-        public void setCards(ArrayList<com.example.geomatmatzi.tichu..Cards.Card> cards) {
+        public void setCards(ArrayList<com.example.geomatmatzi.tichu.Cards.Card> cards) {
             this.table = cards;
         }
 
@@ -743,7 +745,7 @@ public class MainActivity extends AppCompatActivity {
          *
          * @return CardCombination
          */
-        public com.example.geomatmatzi.tichu..Combinations.CardCombination getCurrentRound() {
+        public com.example.geomatmatzi.tichu.Combinations.CardCombination getCurrentRound() {
             return currentRound;
         }
 
@@ -752,7 +754,7 @@ public class MainActivity extends AppCompatActivity {
          * 8etei to eidos tou trexontos gurou,monofullia,pair ktl
          * @param currentRound
          */
-        public void setCurrentRound(com.example.geomatmatzi.tichu..Combinations.CardCombination currentRound) {
+        public void setCurrentRound(com.example.geomatmatzi.tichu.Combinations.CardCombination currentRound) {
             this.currentRound = currentRound;
         }
 
@@ -822,7 +824,7 @@ public class MainActivity extends AppCompatActivity {
          * Dinei tis kartes tou paixnidiou
          * @return List<Card>
          */
-        public ArrayList<com.example.geomatmatzi.tichu..Cards.Card> getTable() {
+        public ArrayList<com.example.geomatmatzi.tichu.Cards.Card> getTable() {
             return table;
         }
 
@@ -831,7 +833,7 @@ public class MainActivity extends AppCompatActivity {
          * oi kartes tis trapoulas
          * @param table
          */
-        public void setTable(ArrayList<com.example.geomatmatzi.tichu..Cards.Card> table) {
+        public void setTable(ArrayList<com.example.geomatmatzi.tichu.Cards.Card> table) {
             this.table = table;
         }
 
@@ -956,8 +958,8 @@ public class MainActivity extends AppCompatActivity {
         public void EmptyAllListOfPlayers(){};
 
 
-        public int getCardsCategory(com.example.geomatmatzi.tichu..Combinations.CardCombination c){
-            com.example.geomatmatzi.tichu..Combinations.CardCombination.sortDeck(c.getCards());
+        public int getCardsCategory(com.example.geomatmatzi.tichu.Combinations.CardCombination c){
+            com.example.geomatmatzi.tichu.Combinations.CardCombination.sortDeck(c.getCards());
 
             switch(c.getCards().size()){
                 case 1: //monofulo
@@ -1049,7 +1051,7 @@ public class MainActivity extends AppCompatActivity {
                         //full
 
                         int countaa=0, countbb=0;
-                        for(com.example.geomatmatzi.tichu..Cards.Card tmp1 : c.getCards()){
+                        for(com.example.geomatmatzi.tichu.Cards.Card tmp1 : c.getCards()){
 
                             if(tmp1.getValue() == c.getCards().get(0).getValue()){
                                 countaa++;
@@ -1165,7 +1167,7 @@ public class MainActivity extends AppCompatActivity {
         public static void main(String[] args) {
             TICHU test = new TICHU("1","2","3","4");
 
-            for(com.example.geomatmatzi.tichu..Cards.Card tmp : test.table){
+            for(com.example.geomatmatzi.tichu.Cards.Card tmp : test.table){
                 System.out.println("Card: "+tmp.toString());
             }
             System.out.println("Size " + test.table.size());
