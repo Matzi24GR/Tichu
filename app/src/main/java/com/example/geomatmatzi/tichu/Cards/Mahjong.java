@@ -1,6 +1,6 @@
-package com.example.geomatmatzi.tichu..com.example.geomatmatzi.tichu..Cards;
+package com.example.geomatmatzi.tichu.Cards;
 
-public class Mahjong extends com.example.geomatmatzi.tichu..Cards.SpecialCard {
+public class Mahjong extends com.example.geomatmatzi.tichu.Cards.SpecialCard {
     int WishNumber;
     /**
      * constructor
