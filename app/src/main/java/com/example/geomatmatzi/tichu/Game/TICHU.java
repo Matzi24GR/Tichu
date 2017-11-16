@@ -1,7 +1,6 @@
 package com.example.geomatmatzi.tichu.Game;
 
 import com.example.geomatmatzi.tichu.Cards.Card;
-import com.example.geomatmatzi.tichu.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,6 @@ public class TICHU {
     private boolean whishDone;
     private com.example.geomatmatzi.tichu.Game.GameState state;
     private int PasoCount;
-    private IGameClient client;
 
     /**
      * Constructor
@@ -109,13 +107,11 @@ public class TICHU {
 
         }
         this.currPlayer = this.getNextPlayer();
-        this.client.changePlayer(this.currentRound);
     }
 
     public boolean sayTichu(com.example.geomatmatzi.tichu.Game.Player p) {
         if (p.getPlayersHand().size() == 14) {
             p.setSaidTichu(true);
-            this.playerWhosaidcom.example.geomatmatzi.tichu.add(p);
             return true;
         } else {
             return false;
@@ -329,7 +325,6 @@ public class TICHU {
             ArrayList<com.example.geomatmatzi.tichu.Cards.Card> cs = new ArrayList<>();
             cs.add(new com.example.geomatmatzi.tichu.Cards.Mahjong());
 
-            this.client.changePlayer(new com.example.geomatmatzi.tichu.Combinations.CardSet(cs));
             return true;
 
         }
@@ -347,7 +342,6 @@ public class TICHU {
                     this.currPlayer = p;
                     this.currentRound = deck;
                     this.currPlayer = this.getNextPlayer();
-                    this.client.changePlayer(deck);
                     return true;
                 }
             } else if ((this.whishDone == false) && c.hasCardWithValue(this.wishNumber)) {
@@ -365,7 +359,6 @@ public class TICHU {
                 this.PasoCount = 0;
 
                 this.currPlayer = this.getNextPlayer();
-                this.client.changePlayer(deck);
                 return true;
             }
             //new round
@@ -396,7 +389,6 @@ public class TICHU {
                     this.PasoCount = 0;
                     this.currentRound = null;
                     this.table.clear();
-                    this.client.changePlayer(null);
                     return true;
                 }
                 this.currPlayer = p;
@@ -412,7 +404,6 @@ public class TICHU {
                 }
 
                 this.currPlayer = this.getNextPlayer();
-                this.client.changePlayer(deck);
                 return true;
 
 
@@ -425,19 +416,16 @@ public class TICHU {
 
                     //Dragon in Monofyla
                     if ((comb == 1) && (deck.getCards().get(0) instanceof com.example.geomatmatzi.tichu.Cards.Drache)) {
-                        com.example.geomatmatzi.tichu.Game.Player togive = this.client.showTheMpazaWindow();
                         this.PasoCount = 0;
                         for (com.example.geomatmatzi.tichu.Cards.Card tmp : deck.getCards()) {
                             this.table.add(tmp);
                         }
-                        togive.CollectCardsFromTable(this.table);
                         this.table.clear();
                         this.currentRound = null;
                         p.removeCardsFromHands(c.getCards());
                         if (this.FindWinners(p)) {
                             return true;
                         }
-                        this.client.changePlayer(null);
 
                         return true;
                     }
@@ -454,7 +442,6 @@ public class TICHU {
                     }
 
                     this.currPlayer = this.getNextPlayer();
-                    this.client.changePlayer(deck);
                     return true;
                 } else {
                     return false;
@@ -523,17 +510,6 @@ public class TICHU {
                 }
 
             }
-            System.out.println("Score1: " + this.Team1.getScore());
-            System.out.println("Score2: " + this.Team2.getScore());
-            //       NewRound();
-            if (this.Team1.getScore() >= 1000) {
-                this.client.showWinnerPanel("Team 1");
-            } else if (this.Team2.getScore() >= 1000) {
-                this.client.showWinnerPanel("Team 2");
-            } else {
-                this.increaseRound();
-                this.client.newRound();
-            }
 
 
         } else {
@@ -557,18 +533,10 @@ public class TICHU {
             //     NewRound();
             System.out.println("2Score1: " + this.Team1.getScore());
             System.out.println("2Score2: " + this.Team2.getScore());
-            if (this.Team1.getScore() >= 1000) {
-                this.client.showWinnerPanel("Team 1");
-            } else if (this.Team2.getScore() >= 1000) {
-                this.client.showWinnerPanel("Team 2");
-            } else {
-                this.increaseRound();
-                this.client.newRound();
             }
         }
 
 
-    }
 
 
     /**
@@ -639,8 +607,6 @@ public class TICHU {
         this.lastPlayerOfRound = null;
         this.Team1.CleanTeamForNextround();
         this.Team2.CleanTeamForNextround();
-        this.playerWhosaiGrandcom.example.geomatmatzi.tichu.clear();
-        this.playerWhosaidcom.example.geomatmatzi.tichu.clear();
 
         this.whishDone = false;
 
@@ -734,7 +700,6 @@ public class TICHU {
      * transformers
      * 8etei tou paiktes tou Group2
      *
-     * @param Group1
      */
     public void setSecondTeam(com.example.geomatmatzi.tichu.Game.Team Group2) {
         this.Team2 = Group2;
@@ -910,9 +875,9 @@ public class TICHU {
      *
      * @param playerWhosaiGrandTichu
      */
-    public void addPlayerWhosaiGrandTichu(com.example.geomatmatzi.tichu.Game.Player playerWhosaiGrandTichu) {
-        this.playerWhosaiGrandcom.example.geomatmatzi.tichu..add(playerWhosaiGrandTichu);
-    }
+    //public void addPlayerWhosaiGrandTichu(com.example.geomatmatzi.tichu.Game.Player playerWhosaiGrandTichu) {
+    //    this.playerWhosaiGrandcom.example.geomatmatzi.tichu.add(playerWhosaiGrandTichu);
+    //}
 
     /**
      * accessors
@@ -930,11 +895,11 @@ public class TICHU {
      *
      * @param playerWhosaidTichu
      */
-    public void addPlayerWhosaidTichu(com.example.geomatmatzi.tichu.Game.Player playerWhosaidTichu) {
-        playerWhosaidcom.add(playerWhosaidTichu);
-        playerWhosaidcom.example.geomatmatzi.tichu.getTeam().setSaidtichu(true);
-        playerWhosaidcom.example.geomatmatzi.tichu.setSaidTichu(true);
-    }
+    //public void addPlayerWhosaidTichu(com.example.geomatmatzi.tichu.Game.Player playerWhosaidTichu) {
+    //    playerWhosaidcom.add(playerWhosaidTichu);
+    //    playerWhosaidcom.example.geomatmatzi.tichu.getTeam().setSaidtichu(true);
+    //    playerWhosaidcom.example.geomatmatzi.tichu.setSaidTichu(true);
+   // }
 
     /**
      * accessors
@@ -1179,32 +1144,6 @@ public class TICHU {
 
     }
 
-
-    public static void main(String[] args) {
-        MainActivity.TICHU test = new MainActivity.TICHU("1", "2", "3", "4");
-
-        for (com.example.geomatmatzi.tichu.Cards.Card tmp : test.table) {
-            System.out.println("Card: " + tmp.toString());
-        }
-        System.out.println("Size " + test.table.size());
-        // System.out.println("Shuffle: "+ test.drawFromDeck().toString());
-        test.initialiazePlayersWithEightCards();
-        test.initialiazePlayersWithSixMoreCards();
-
-      /*  CardCombination.sortDeck(test.Team1.getP1().getPlayersHand());
-
-        for(int i = 0 ; i < 14 ; i++){
-            System.out.println("P1 "+ test.Team1.getP1().getPlayersHand().get(i).toString());
-        }*/
-
-
-        for (int i = 0; i < 12; i++) {
-            test.currPlayer = test.getNextPlayer();
-            //System.out.println("Play+ "+  test.getNextPlayer().getName());
-            test.state = com.example.geomatmatzi.tichu.Game.GameState.PLAYING;
-        }
-    }
-
     /**
      * @return the state
      */
@@ -1225,13 +1164,6 @@ public class TICHU {
         } else {
             return false;
         }
-    }
-
-    /**
-     * @param client the client to set
-     */
-    public void setClient(IGameClient client) {
-        this.client = client;
     }
 
     public com.example.geomatmatzi.tichu.Game.Player getCurrentPlayer() {
