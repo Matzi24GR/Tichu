@@ -1,10 +1,11 @@
-package com.example.geomatmatzi.tichu..Combinations;
+package com.example.geomatmatzi.tichu.Combinations;
+
+import com.example.geomatmatzi.tichu.Cards.Card;
+import com.example.geomatmatzi.tichu.Cards.Phoenix;
 
 import java.util.ArrayList;
-import com.example.geomatmatzi.tichu..Cards.Card;
-import com.example.geomatmatzi.tichu..Cards.Phoenix;
 
-public class Full extends CardCombination{
+public class Full extends CardCombination {
 
     
     public Full(ArrayList<Card> tmp) throws Exception{
@@ -38,8 +39,8 @@ public class Full extends CardCombination{
     @Override
     public boolean ispowerOfSetGreaterThan(CardCombination other) {
         //we have to find the 3 same cards first
-        com.example.geomatmatzi.tichu..Combinations.CardCombination.sortDeck(this.getCards());
-        com.example.geomatmatzi.tichu..Combinations.CardCombination.sortDeck(other.getCards());
+        com.example.geomatmatzi.tichu.Combinations.CardCombination.sortDeck(this.getCards());
+        com.example.geomatmatzi.tichu.Combinations.CardCombination.sortDeck(other.getCards());
         int counta ,countb, valuea = 0, valueb = 0;
         if(this.HasPhoenix()){
             //couples

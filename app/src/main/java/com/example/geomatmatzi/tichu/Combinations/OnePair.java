@@ -1,7 +1,7 @@
-package com.example.geomatmatzi.tichu..Combinations;
+package com.example.geomatmatzi.tichu.Combinations;
 
 import java.util.ArrayList;
-import com.example.geomatmatzi.tichu..Cards.Card;
+import com.example.geomatmatzi.tichu.Cards.Card;
 
 public class OnePair extends CardCombination {
     
@@ -42,8 +42,8 @@ public class OnePair extends CardCombination {
 
     @Override
     public boolean ispowerOfSetGreaterThan(CardCombination other) {
-              com.example.geomatmatzi.tichu..Combinations.CardCombination.sortDeck(this.getCards());
-        com.example.geomatmatzi.tichu..Combinations.CardCombination.sortDeck(other.getCards());
+              com.example.geomatmatzi.tichu.Combinations.CardCombination.sortDeck(this.getCards());
+        com.example.geomatmatzi.tichu.Combinations.CardCombination.sortDeck(other.getCards());
         if(this.getCards().get(1).getValue() > other.getCards().get(1).getValue()){
             return true;
         }

@@ -1,12 +1,10 @@
-package com.example.geomatmatzi.tichu..com.example.geomatmatzi.tichu..Combinations;
+package com.example.geomatmatzi.tichu.Combinations;
 
-import com.example.geomatmatzi.tichu..com.example.geomatmatzi.tichu..Cards.Card;
-import com.example.geomatmatzi.tichu..com.example.geomatmatzi.tichu..Cards.Mahjong;
-import com.example.geomatmatzi.tichu..com.example.geomatmatzi.tichu..Cards.Phoenix;
+import com.example.geomatmatzi.tichu.Cards.Card;
+import com.example.geomatmatzi.tichu.Cards.Mahjong;
+import com.example.geomatmatzi.tichu.Cards.Phoenix;
 
 import java.util.ArrayList;
-
-.Cards.*;
 
 
 public abstract class CardCombination {

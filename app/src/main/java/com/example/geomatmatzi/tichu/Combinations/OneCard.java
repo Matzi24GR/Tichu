@@ -1,7 +1,7 @@
-package com.example.geomatmatzi.tichu..Combinations;
+package com.example.geomatmatzi.tichu.Combinations;
 
 import java.util.ArrayList;
-import com.example.geomatmatzi.tichu..Cards.*;
+import com.example.geomatmatzi.tichu.Cards.*;
 
 public class OneCard extends CardCombination {
     

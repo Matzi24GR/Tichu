@@ -1,7 +1,8 @@
-package com.example.geomatmatzi.tichu..Combinations;
+package com.example.geomatmatzi.tichu.Combinations;
+
+import com.example.geomatmatzi.tichu.Cards.Card;
 
 import java.util.ArrayList;
-import com.example.geomatmatzi.tichu..Cards.Card;
 
 
 public class KendaBomb extends CardCombination {
