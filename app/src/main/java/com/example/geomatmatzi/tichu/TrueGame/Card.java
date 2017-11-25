@@ -16,9 +16,18 @@ public class Card {
     //gia tis eikones
     private int mImageId;
 
+
     public Card(int ArithmosKartas, int XromaKartas) {
         mArithmosKartasInt = ArithmosKartas;
         mXromaKartasInt = XromaKartas;
 
+    }
+
+    public String getArithmosKartas() {
+        return mArithmosKartas;
+    }
+
+    public String getmXromaKartas() {
+        return mXromaKartas;
     }
 }
