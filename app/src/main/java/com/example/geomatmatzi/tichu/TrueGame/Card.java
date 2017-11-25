@@ -1,7 +1,5 @@
 package com.example.geomatmatzi.tichu.TrueGame;
 
-import android.support.v4.content.res.ResourcesCompat;
-
 /**
  * Created by Geomat Matzi on 24/11/2017.
  */
@@ -16,19 +14,24 @@ public class Card {
     private String mXromaKartas;
 
     //gia tis eikones
-    private int mImageId;
+    String mImageId;
+    private int ImageId;
 
     public Card(int ArithmosKartas, int XromaKartas) {
         mArithmosKartasInt = ArithmosKartas;
-        mXromaKartasInt = XromaKartas;
-        mImageId = ResourcesCompat.getDrawable()
+        mImageId = "R.drawable"+"d2";
+        int ImageId = Integer.valueOf(mImageId);
     }
 
     public int getArithmosKartasInt() {
         return mArithmosKartasInt;
     }
 
-    public int getXromaKartasInt() {
+    int getXromaKartasInt() {
         return mXromaKartasInt;
+    }
+
+    public int getImageId(){
+        return ImageId;
     }
 }
