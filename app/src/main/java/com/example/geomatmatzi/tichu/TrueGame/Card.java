@@ -21,7 +21,7 @@ public class Card {
     public Card(int ArithmosKartas, int XromaKartas) {
         mArithmosKartasInt = ArithmosKartas;
         mXromaKartasInt = XromaKartas;
-        mImageId = ResourcesCompat.getmimmap
+        mImageId = ResourcesCompat.getDrawable()
     }
 
     public int getArithmosKartasInt() {
