@@ -31,21 +31,40 @@ public class Card {
     public Card(int XromaKartas, int ArithmosKartas, Context context) {
         mArithmosKartasInt = ArithmosKartas;
         switch (XromaKartas) {
+            case 0:
+                switch (mArithmosKartasInt) {
+                    case 1:
+                        cardName = "mahjong";
+                        break;
+                    case 2:
+                        cardName = "phoenix";
+                        break;
+                    case 3:
+                        cardName = "drache";
+                        break;
+                    case 4:
+                        cardName = "hund";
+                        break;
+                }
+                break;
             case 1:
                 cardName = "a";
+                cardName = cardName + mArithmosKartasInt;
                 break;
             case 2:
                 cardName = "b";
+                cardName = cardName + mArithmosKartasInt;
                 break;
             case 3:
                 cardName = "c";
+                cardName = cardName + mArithmosKartasInt;
                 break;
-            default:
+            case 4:
                 cardName = "d";
+                cardName = cardName + mArithmosKartasInt;
                 break;
         }
 
-        cardName = cardName + ArithmosKartas;
         Context c = context;
         Resources resources = c.getResources();
         mImageId = resources.getIdentifier(cardName, "drawable", c.getPackageName());

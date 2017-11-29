@@ -33,7 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
         final ArrayList<Card> AllCards = new ArrayList<Card>();
 
-        AllCards.add(new Card(1,1, getApplicationContext()));
+        AllCards.add(new Card(0,1, getApplicationContext())); //mah-jong
+        AllCards.add(new Card(0,2, getApplicationContext())); //foinikas
+        AllCards.add(new Card(0,3, getApplicationContext())); //drakos
+        AllCards.add(new Card(0,4, getApplicationContext())); //skilia
+
+        AllCards.add(new Card(1,1, getApplicationContext())); //Ta mavra xartia
         AllCards.add(new Card(1,2, getApplicationContext()));
         AllCards.add(new Card(1,3, getApplicationContext()));
         AllCards.add(new Card(1,4, getApplicationContext()));
@@ -46,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         AllCards.add(new Card(1,11, getApplicationContext()));
         AllCards.add(new Card(1,12, getApplicationContext()));
         AllCards.add(new Card(1,13, getApplicationContext()));
-        AllCards.add(new Card(2,1, getApplicationContext()));
+
+        AllCards.add(new Card(2,1, getApplicationContext())); //ta mple xartia
         AllCards.add(new Card(2,2, getApplicationContext()));
         AllCards.add(new Card(2,3, getApplicationContext()));
         AllCards.add(new Card(2,4, getApplicationContext()));
@@ -59,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         AllCards.add(new Card(2,11, getApplicationContext()));
         AllCards.add(new Card(2,12, getApplicationContext()));
         AllCards.add(new Card(2,13, getApplicationContext()));
-        AllCards.add(new Card(3,1, getApplicationContext()));
+
+        AllCards.add(new Card(3,1, getApplicationContext())); // ta prasina
         AllCards.add(new Card(3,2, getApplicationContext()));
         AllCards.add(new Card(3,3, getApplicationContext()));
         AllCards.add(new Card(3,4, getApplicationContext()));
@@ -72,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
         AllCards.add(new Card(3,11,getApplicationContext()));
         AllCards.add(new Card(3,12,getApplicationContext()));
         AllCards.add(new Card(3,13,getApplicationContext()));
-        AllCards.add(new Card(4,1, getApplicationContext()));
+
+        AllCards.add(new Card(4,1, getApplicationContext())); // ta kokkina
         AllCards.add(new Card(4,2, getApplicationContext()));
         AllCards.add(new Card(4,3, getApplicationContext()));
         AllCards.add(new Card(4,4, getApplicationContext()));
