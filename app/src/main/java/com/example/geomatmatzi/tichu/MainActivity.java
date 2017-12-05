@@ -15,7 +15,6 @@ import com.example.geomatmatzi.tichu.TrueGame.DeckAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,10 +22,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Button button = (Button) findViewById(R.id.button);
+        final Button button =  findViewById(R.id.button);
         final ArrayList<Card> deck = new ArrayList<Card>();
-        final Random random = new Random();
-        final GridView gridView = findViewById(R.id.grid_view);
+        final GridView gridView = findViewById(R.id.player_grid_view);
         final DeckAdapter adapter = new DeckAdapter(this, deck);
         final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.comedy);
         gridView.setAdapter(adapter);
@@ -96,16 +94,12 @@ public class MainActivity extends AppCompatActivity {
 
         Collections.shuffle(AllCards);
 
-
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(AllCards.size() != 0 ) {
-                    deck.add(AllCards.get(0));
-                    AllCards.remove(0);
-                    adapter.notifyDataSetChanged();
-                }
+
+                addCards(deck,AllCards,2);
+                adapter.notifyDataSetChanged();
 
                 String cardName = deck.get(deck.size()-1).getCardName();
                 Log.v("Cards" , cardName);
@@ -128,7 +122,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    public ArrayList addCards(ArrayList toList, ArrayList fromList, int numberOfCards) {
+        for(int i = 1; i <= numberOfCards; i++) {
+            if(fromList.size() != 0 ) {
+                toList.add(fromList.get(0));
+                fromList.remove(0);
+            }
+        }
+        return toList;
+    }
 
 }
 
