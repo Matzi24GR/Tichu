@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Button button =  findViewById(R.id.button);
+        final Button addCardsButton =  findViewById(R.id.add_cards_button);
         final ArrayList<Card> deck = new ArrayList<Card>();
         final GridView gridView = findViewById(R.id.player_grid_view);
         final DeckAdapter adapter = new DeckAdapter(this, deck);
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         Collections.shuffle(AllCards);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        addCardsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
