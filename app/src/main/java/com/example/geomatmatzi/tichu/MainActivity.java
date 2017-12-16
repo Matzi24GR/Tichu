@@ -23,11 +23,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Button addCardsButton =  findViewById(R.id.add_cards_button);
-        final ArrayList<Card> deck = new ArrayList<Card>();
-        final GridView gridView = findViewById(R.id.player_grid_view);
-        final DeckAdapter adapter = new DeckAdapter(this, deck);
+        final Button sortButton = findViewById(R.id.sort_button);
+        final ArrayList<Card> Player1Deck = new ArrayList<Card>();
+        final ArrayList<Card> SelectedCards = new ArrayList<>();
+
+        final GridView PlayergridView = findViewById(R.id.player_grid_view);
+        final GridView SelectedGridView = findViewById(R.id.select_deck);
+        final DeckAdapter PlayerAdapter = new DeckAdapter(this, Player1Deck);
+        PlayergridView.setAdapter(PlayerAdapter);
+        final DeckAdapter SelectedAdapter = new DeckAdapter(this, SelectedCards);
+        SelectedGridView.setAdapter(SelectedAdapter);
+
         final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.comedy);
-        gridView.setAdapter(adapter);
 
         final ArrayList<Card> AllCards = new ArrayList<Card>();
 
@@ -98,26 +105,52 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                addCards(deck,AllCards,2);
-                adapter.notifyDataSetChanged();
+                addCards(Player1Deck,AllCards,2);
+                PlayerAdapter.notifyDataSetChanged();
 
-                String cardName = deck.get(deck.size()-1).getCardName();
+                String cardName = Player1Deck.get(Player1Deck.size()-1).getCardName();
                 Log.v("Cards" , cardName);
-                adapter.notifyDataSetChanged();
+                PlayerAdapter.notifyDataSetChanged();
             }
         });
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        sortButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.sort(Player1Deck);
+                PlayerAdapter.notifyDataSetChanged();
+            }
+        });
+
+        PlayergridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Card card = deck.get(i);
+                Card card = Player1Deck.get(i);
                 Toast toast = Toast.makeText(getApplicationContext(), card.getCardName(), Toast.LENGTH_SHORT);
                 toast.show();
                 mediaPlayer.start();
+                SelectedCards.add(Player1Deck.get(i));
+                Player1Deck.remove(i);
+                PlayerAdapter.notifyDataSetChanged();
+                SelectedAdapter.notifyDataSetChanged();
 
             }
         });
 
+        SelectedGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Card card = SelectedCards.get(i);
+                Toast toast = Toast.makeText(getApplicationContext(), card.getCardName(), Toast.LENGTH_SHORT);
+                toast.show();
+                mediaPlayer.start();
+                Player1Deck.add(SelectedCards.get(i));
+                SelectedCards.remove(i);
+                PlayerAdapter.notifyDataSetChanged();
+                SelectedAdapter.notifyDataSetChanged();
+
+            }
+        });
 
 
     }

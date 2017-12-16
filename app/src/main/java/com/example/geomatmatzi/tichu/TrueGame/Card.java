@@ -2,6 +2,7 @@ package com.example.geomatmatzi.tichu.TrueGame;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 
@@ -12,7 +13,7 @@ import com.example.geomatmatzi.tichu.R;
  * Created by Geomat Matzi on 24/11/2017.
  */
 
-public class Card {
+public class Card implements Comparable<Card>{
     // gia ton upologismo kai sykrisi
     private int mArithmosKartasInt;
     private int mXromaKartasInt;
@@ -84,5 +85,18 @@ public class Card {
 
     public String getCardName() {
         return cardName;
+    }
+
+    @Override
+    public int compareTo(@NonNull Card card) {
+        int card1int = getArithmosKartasInt();
+        int card2int = card.getArithmosKartasInt();
+        if (card1int > card2int) {
+            return -1;
+        } else if (card1int < card2int) {
+            return 1;
+        }else {
+            return 0;
+        }
     }
 }
