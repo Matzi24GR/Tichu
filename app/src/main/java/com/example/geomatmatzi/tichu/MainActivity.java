@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         final Button addCardsButton =  findViewById(R.id.add_cards_button);
         final Button sortButton = findViewById(R.id.sort_button);
         final ArrayList<Card> Player1Deck = new ArrayList<Card>();
+        final ArrayList<Card> Player2Deck = new ArrayList<Card>();
+        final ArrayList<Card> Player3Deck = new ArrayList<Card>();
+        final ArrayList<Card> Player4Deck = new ArrayList<Card>();
         final ArrayList<Card> SelectedCards = new ArrayList<>();
 
         final GridView PlayergridView = findViewById(R.id.player_grid_view);

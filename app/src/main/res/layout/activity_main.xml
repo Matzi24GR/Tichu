@@ -8,6 +8,11 @@
     android:orientation="vertical"
     tools:context="com.example.geomatmatzi.tichu.MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CurrentPlayer"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
