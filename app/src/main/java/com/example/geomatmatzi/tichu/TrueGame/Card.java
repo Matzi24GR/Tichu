@@ -34,16 +34,16 @@ public class Card implements Comparable<Card>{
         switch (XromaKartas) {
             case 0:
                 switch (mArithmosKartasInt) {
-                    case 1:
+                    case 14:
                         cardName = "mahjong";
                         break;
-                    case 2:
+                    case 15:
                         cardName = "phoenix";
                         break;
-                    case 3:
+                    case 16:
                         cardName = "drache";
                         break;
-                    case 4:
+                    case 17:
                         cardName = "hund";
                         break;
                 }

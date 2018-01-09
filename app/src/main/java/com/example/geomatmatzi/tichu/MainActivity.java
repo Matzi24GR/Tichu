@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         final ArrayList<Card> AllCards = new ArrayList<Card>();
 
-        AllCards.add(new Card(0,1, getApplicationContext())); //mah-jong
-        AllCards.add(new Card(0,2, getApplicationContext())); //foinikas
-        AllCards.add(new Card(0,3, getApplicationContext())); //drakos
-        AllCards.add(new Card(0,4, getApplicationContext())); //skilia
+        AllCards.add(new Card(0,14, getApplicationContext())); //mah-jong
+        AllCards.add(new Card(0,15, getApplicationContext())); //foinikas
+        AllCards.add(new Card(0,16, getApplicationContext())); //drakos
+        AllCards.add(new Card(0,17, getApplicationContext())); //skilia
 
         AllCards.add(new Card(1,1, getApplicationContext())); //Ta mavra xartia
         AllCards.add(new Card(1,2, getApplicationContext()));
