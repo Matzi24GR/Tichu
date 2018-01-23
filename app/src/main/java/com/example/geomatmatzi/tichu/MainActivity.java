@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.geomatmatzi.tichu.TrueGame.Card;
@@ -15,6 +16,8 @@ import com.example.geomatmatzi.tichu.TrueGame.DeckAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         final GridView PlayergridView = findViewById(R.id.player_grid_view);
         final GridView SelectedGridView = findViewById(R.id.select_deck);
+        final ImageView ImageButton = findViewById(R.id.ImageButton);
         final DeckAdapter PlayerAdapter = new DeckAdapter(this, Player1Deck);
         PlayergridView.setAdapter(PlayerAdapter);
         final DeckAdapter SelectedAdapter = new DeckAdapter(this, SelectedCards);
@@ -41,66 +45,66 @@ public class MainActivity extends AppCompatActivity {
 
         final ArrayList<Card> AllCards = new ArrayList<Card>();
 
-        AllCards.add(new Card(0,14, getApplicationContext())); //mah-jong
-        AllCards.add(new Card(0,15, getApplicationContext())); //foinikas
-        AllCards.add(new Card(0,16, getApplicationContext())); //drakos
-        AllCards.add(new Card(0,17, getApplicationContext())); //skilia
+        AllCards.add(new Card(5,0,20, getApplicationContext())); //mah-jong
+        AllCards.add(new Card(6,0,20, getApplicationContext())); //foinikas
+        AllCards.add(new Card(7,0,20, getApplicationContext())); //drakos
+        AllCards.add(new Card(8,0,20, getApplicationContext())); //skilia
 
-        AllCards.add(new Card(1,1, getApplicationContext())); //Ta mavra xartia
-        AllCards.add(new Card(1,2, getApplicationContext()));
-        AllCards.add(new Card(1,3, getApplicationContext()));
-        AllCards.add(new Card(1,4, getApplicationContext()));
-        AllCards.add(new Card(1,5, getApplicationContext()));
-        AllCards.add(new Card(1,6, getApplicationContext()));
-        AllCards.add(new Card(1,7, getApplicationContext()));
-        AllCards.add(new Card(1,8, getApplicationContext()));
-        AllCards.add(new Card(1,9, getApplicationContext()));
-        AllCards.add(new Card(1,10, getApplicationContext()));
-        AllCards.add(new Card(1,11, getApplicationContext()));
-        AllCards.add(new Card(1,12, getApplicationContext()));
-        AllCards.add(new Card(1,13, getApplicationContext()));
+        AllCards.add(new Card(1,1,1, getApplicationContext())); //Ta mavra xartia
+        AllCards.add(new Card(1,2,2, getApplicationContext()));
+        AllCards.add(new Card(1,3,3, getApplicationContext()));
+        AllCards.add(new Card(1,4,4, getApplicationContext()));
+        AllCards.add(new Card(1,5,5, getApplicationContext()));
+        AllCards.add(new Card(1,6,6, getApplicationContext()));
+        AllCards.add(new Card(1,7,7, getApplicationContext()));
+        AllCards.add(new Card(1,8,8, getApplicationContext()));
+        AllCards.add(new Card(1,9,9, getApplicationContext()));
+        AllCards.add(new Card(1,10,10,getApplicationContext()));
+        AllCards.add(new Card(1,11,11,getApplicationContext()));
+        AllCards.add(new Card(1,12,12,getApplicationContext()));
+        AllCards.add(new Card(1,13,13,getApplicationContext()));
 
-        AllCards.add(new Card(2,1, getApplicationContext())); //ta mple xartia
-        AllCards.add(new Card(2,2, getApplicationContext()));
-        AllCards.add(new Card(2,3, getApplicationContext()));
-        AllCards.add(new Card(2,4, getApplicationContext()));
-        AllCards.add(new Card(2,5, getApplicationContext()));
-        AllCards.add(new Card(2,6, getApplicationContext()));
-        AllCards.add(new Card(2,7, getApplicationContext()));
-        AllCards.add(new Card(2,8, getApplicationContext()));
-        AllCards.add(new Card(2,9, getApplicationContext()));
-        AllCards.add(new Card(2,10, getApplicationContext()));
-        AllCards.add(new Card(2,11, getApplicationContext()));
-        AllCards.add(new Card(2,12, getApplicationContext()));
-        AllCards.add(new Card(2,13, getApplicationContext()));
+        AllCards.add(new Card(2,1,1, getApplicationContext())); //Ta mple xartia
+        AllCards.add(new Card(2,2,2, getApplicationContext()));
+        AllCards.add(new Card(2,3,3, getApplicationContext()));
+        AllCards.add(new Card(2,4,4, getApplicationContext()));
+        AllCards.add(new Card(2,5,5, getApplicationContext()));
+        AllCards.add(new Card(2,6,6, getApplicationContext()));
+        AllCards.add(new Card(2,7,7, getApplicationContext()));
+        AllCards.add(new Card(2,8,8, getApplicationContext()));
+        AllCards.add(new Card(2,9,9, getApplicationContext()));
+        AllCards.add(new Card(2,10,10,getApplicationContext()));
+        AllCards.add(new Card(2,11,11,getApplicationContext()));
+        AllCards.add(new Card(2,12,12,getApplicationContext()));
+        AllCards.add(new Card(2,13,13,getApplicationContext()));
 
-        AllCards.add(new Card(3,1, getApplicationContext())); // ta prasina
-        AllCards.add(new Card(3,2, getApplicationContext()));
-        AllCards.add(new Card(3,3, getApplicationContext()));
-        AllCards.add(new Card(3,4, getApplicationContext()));
-        AllCards.add(new Card(3,5, getApplicationContext()));
-        AllCards.add(new Card(3,6, getApplicationContext()));
-        AllCards.add(new Card(3,7, getApplicationContext()));
-        AllCards.add(new Card(3,8, getApplicationContext()));
-        AllCards.add(new Card(3,9, getApplicationContext()));
-        AllCards.add(new Card(3,10,getApplicationContext()));
-        AllCards.add(new Card(3,11,getApplicationContext()));
-        AllCards.add(new Card(3,12,getApplicationContext()));
-        AllCards.add(new Card(3,13,getApplicationContext()));
+        AllCards.add(new Card(3,1,1, getApplicationContext())); //Ta prasina xartia
+        AllCards.add(new Card(3,2,2, getApplicationContext()));
+        AllCards.add(new Card(3,3,3, getApplicationContext()));
+        AllCards.add(new Card(3,4,4, getApplicationContext()));
+        AllCards.add(new Card(3,5,5, getApplicationContext()));
+        AllCards.add(new Card(3,6,6, getApplicationContext()));
+        AllCards.add(new Card(3,7,7, getApplicationContext()));
+        AllCards.add(new Card(3,8,8, getApplicationContext()));
+        AllCards.add(new Card(3,9,9, getApplicationContext()));
+        AllCards.add(new Card(3,10,10,getApplicationContext()));
+        AllCards.add(new Card(3,11,11,getApplicationContext()));
+        AllCards.add(new Card(3,12,12,getApplicationContext()));
+        AllCards.add(new Card(3,13,13,getApplicationContext()));
 
-        AllCards.add(new Card(4,1, getApplicationContext())); // ta kokkina
-        AllCards.add(new Card(4,2, getApplicationContext()));
-        AllCards.add(new Card(4,3, getApplicationContext()));
-        AllCards.add(new Card(4,4, getApplicationContext()));
-        AllCards.add(new Card(4,5, getApplicationContext()));
-        AllCards.add(new Card(4,6, getApplicationContext()));
-        AllCards.add(new Card(4,7, getApplicationContext()));
-        AllCards.add(new Card(4,8, getApplicationContext()));
-        AllCards.add(new Card(4,9, getApplicationContext()));
-        AllCards.add(new Card(4,10,getApplicationContext()));
-        AllCards.add(new Card(4,11,getApplicationContext()));
-        AllCards.add(new Card(4,12,getApplicationContext()));
-        AllCards.add(new Card(4,13, getApplicationContext()));
+        AllCards.add(new Card(4,1,1, getApplicationContext())); // ta kokkina
+        AllCards.add(new Card(4,2,2, getApplicationContext()));
+        AllCards.add(new Card(4,3,3, getApplicationContext()));
+        AllCards.add(new Card(4,4,4, getApplicationContext()));
+        AllCards.add(new Card(4,5,5, getApplicationContext()));
+        AllCards.add(new Card(4,6,6, getApplicationContext()));
+        AllCards.add(new Card(4,7,7, getApplicationContext()));
+        AllCards.add(new Card(4,8,8, getApplicationContext()));
+        AllCards.add(new Card(4,9,9, getApplicationContext()));
+        AllCards.add(new Card(4,10,10,getApplicationContext()));
+        AllCards.add(new Card(4,11,11,getApplicationContext()));
+        AllCards.add(new Card(4,12,12,getApplicationContext()));
+        AllCards.add(new Card(4,13,13,getApplicationContext()));
 
         Collections.shuffle(AllCards);
 
@@ -155,6 +159,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                while (SelectedCards.size() != 0) {
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            ImageButton.setImageResource(SelectedCards.get(0).getImageId());
+                            SelectedCards.remove(0);
+                        }
+                    },1000);
+                }
+
+            }
+        });
 
     }
 

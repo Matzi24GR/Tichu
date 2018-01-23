@@ -14,9 +14,10 @@ import com.example.geomatmatzi.tichu.R;
  */
 
 public class Card implements Comparable<Card>{
-    // gia ton upologismo kai sykrisi
+    // gia ton upologismo kai sygrisi
     private int mArithmosKartasInt;
     private int mXromaKartasInt;
+    private int mAksiaKartas;
 
     //gia na emfanizoume ta onomata isos xreiastei
     private String mArithmosKartas;
@@ -29,8 +30,9 @@ public class Card implements Comparable<Card>{
     String cardName = "";
 
 
-    public Card(int XromaKartas, int ArithmosKartas, Context context) {
+    public Card(int XromaKartas, int ArithmosKartas,int AksiaKartas, Context context) {
         mArithmosKartasInt = ArithmosKartas;
+        mAksiaKartas = AksiaKartas;
         switch (XromaKartas) {
             case 0:
                 switch (mArithmosKartasInt) {
@@ -64,6 +66,18 @@ public class Card implements Comparable<Card>{
                 cardName = "d";
                 cardName = cardName + mArithmosKartasInt;
                 break;
+            case 5:
+                cardName = "mahjong";
+                break;
+            case 6:
+                cardName = "phoenix";
+                break;
+            case 7:
+                cardName = "drache";
+                break;
+            case 8:
+                cardName = "hund";
+                break;
         }
 
         Context c = context;
@@ -87,10 +101,14 @@ public class Card implements Comparable<Card>{
         return cardName;
     }
 
+    public int getAksiaKartas() {
+        return mAksiaKartas;
+    }
+
     @Override
     public int compareTo(@NonNull Card card) {
-        int card1int = getArithmosKartasInt();
-        int card2int = card.getArithmosKartasInt();
+        int card1int = getAksiaKartas();
+        int card2int = card.getAksiaKartas();
         if (card1int > card2int) {
             return -1;
         } else if (card1int < card2int) {
